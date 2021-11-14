@@ -1,0 +1,45 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+    nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+    nettrine.orm: Nettrine\ORM\DI\OrmExtension
+    nettrine.cache: Nettrine\Cache\DI\CacheExtension
+    nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
+    nettrine.orm.attributes: Nettrine\ORM\DI\OrmAttributesExtension
+
+nettrine.orm.attributes:
+  mapping:
+   App\Entity: %appDir%/Entity
+
+nettrine.dbal:
+  debug:
+    panel: %debugMode%
+    sourcePaths: [%appDir%]
+  connection:
+    host: localhost
+    driver: pdo_pgsql
+    dbname: value_object_id
+    user: value_object_id
+    password: root
+
+services:
+    - App\Router\RouterFactory::createRouter
+    - App\Repository\ProductRepository
