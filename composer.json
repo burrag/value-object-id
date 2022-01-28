@@ -30,7 +30,8 @@
         "nettrine/orm": "^0.8.2",
         "nettrine/dbal": "^0.7.0",
         "nettrine/cache": "^0.3.0",
-        "contributte/console": "^0.9.1"
+        "contributte/console": "^0.9.1",
+        "nettrine/migrations": "^0.7.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",

@@ -2,30 +2,36 @@
 
 namespace App\Entity;
 
-use App\Entity\Id\ProductId;
+use App\Entity\Id\CategoryId;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Id;
 
 #[ORM\Entity]
-class Product
+class Category
 {
-
     #[Id]
-    #[ORM\Column(type: 'product_id')]
+    #[ORM\Column(type: 'category_id')]
     #[ORM\GeneratedValue('NONE')]
-    private ProductId $id;
+    private CategoryId $id;
 
     #[ORM\Column(type: 'string', nullable: false)]
     private string $title;
 
-    public function __construct(ProductId $id, string $title)
+    public function __construct(CategoryId $id, string $title)
     {
         $this->id = $id;
         $this->title = $title;
     }
 
-    public function getId(): ProductId
+    public function getId(): CategoryId
     {
         return $this->id;
     }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+
 }
